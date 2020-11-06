@@ -29,6 +29,15 @@ See [the website](https://capture.the.spacet.me/) for usage information.
 **Note:** Do not send pull requests to this repository to add a new tenant. Instead, please deploy `personal-puppeteer` to your own account.
 
 1. Generate an RS256 keypair for JWT signing.
+   [Ref](https://gist.github.com/ygotthilf/baa58da5c3dd1f69fae9)
+
+   ```shell
+   mkdir private # Git-ignored
+   ssh-keygen -t rsa -b 4096 -m PEM -f private/jwtRS256.key -N ""
+   openssl rsa -in private/jwtRS256.key -pubout -outform PEM -out private/jwtRS256.key.pub
+   cat private/jwtRS256.key
+   cat private/jwtRS256.key.pub
+   ```
 
 2. Edit [api/auth.ts](./api/auth.ts) and add a new entry to the `allowList`.
 

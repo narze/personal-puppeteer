@@ -92,6 +92,7 @@ async function renderImage({
     await new Promise(requestAnimationFrame)
     await new Promise(requestAnimationFrame)
   })
+
   const file = await page.screenshot({ type })
   return file
 }
@@ -105,13 +106,16 @@ async function getPage() {
     await chrome.font(
       'https://cdn.jsdelivr.net/gh/googlefonts/noto-fonts@master/hinted/ttf/NotoSansThai/NotoSansThai-Regular.ttf'
     )
-    const browser = await launch({
+
+    let browser
+
+    browser = await chrome.puppeteer.launch({
       args: chrome.args,
-      executablePath:
-        (await chrome.executablePath) || '/usr/bin/chromium-browser',
+      executablePath: await chrome.executablePath,
       headless: true,
     })
-    page = await browser.newPage()
+
+    page = ((await browser.newPage()) as unknown) as Page
     _page = page
   }
   return page

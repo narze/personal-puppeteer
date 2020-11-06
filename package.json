@@ -3,6 +3,7 @@
     "@types/puppeteer": "2.0.1",
     "@types/puppeteer-core": "2.0.0",
     "@vercel/node": "^1.7.1",
+    "puppeteer": "^5.4.1",
     "typescript": "^3.9.6",
     "vercel": "^20.1.2",
     "yargs": "^16.0.3"

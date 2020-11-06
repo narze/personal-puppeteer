@@ -44,7 +44,7 @@ require('yargs')
         {
           algorithm: 'RS256',
           noTimestamp: true,
-          issuer: 'dtinth',
+          issuer: 'monosor',
         }
       )
       console.log(jwt)
